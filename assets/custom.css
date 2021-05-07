@@ -1,0 +1,254 @@
+
+/* header / nav */
+
+.site-nav > .menu-lv-1.dropdown:hover > .dropdown-menu-mobile {
+  padding: 30px;
+}
+
+.dropdown-megamenu__img--column > li {
+  width: 20%;
+  padding-right: 25px;
+}
+
+.dropdown-megamenu__img--column h3 {
+  margin-top: 15px;
+}
+
+.dropdown-megamenu__img--column h2 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  text-align:center;
+}
+.site-nav .mega-menu .dropdown-menu-mobile{
+    transform:none;
+    transition:opacity 0.3s;
+    left:100px;
+    right:100px;
+} 
+
+.dropdown-megamenu__img--column .dropdown-megamenu__img{
+   min-height:150px; 
+}
+
+.background_white {
+  background-color: white;
+}
+
+.header-sticky.is-sticky {
+  box-shadow: none;
+}
+
+.template-index .trans-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.second-logo{
+    display:none;
+}
+
+.header-middle{
+    justify-content:center;
+}
+
+.header-middle__left{
+    flex-shrink: 0;
+    width: calc(36% - 125px);
+}
+
+/* slideshow */
+
+.slideshow__heading,
+.slideshow__subheading {
+  text-transform: none;
+}
+
+.overlay--dark .slideshow__image:after{
+   background-color: rgba(46, 46, 46, 0.6); 
+}
+
+/* we reccommend section */
+
+.reccommend-text-content {
+  background-color: #f7f8f7;
+  padding: 25px 0px;
+  text-align: center;
+}
+
+.recommend-title{
+    font-size:40px;
+    margin-bottom:30px;
+    text-transform: none;
+}
+
+.custom-arrows {
+  position: absolute;
+  right: 50px;
+  top: 37px;
+}
+
+.custom-arrows .slick-prev {
+  left: -75px;
+  background-color: #f7f8f7;
+  width: 35px;
+  height: 25px;
+  text-align: center;
+}
+
+.custom-arrows .slick-next {
+  background-color: #f7f8f7;
+  width: 35px;
+  height: 25px;
+  text-align: center;
+}
+
+.custom-arrows .slick-prev:hover,
+.custom-arrows .slick-next:hover {
+  background-color: #6e8771;
+}
+
+.custom-arrows .slick-prev svg,
+.custom-arrows .slick-next svg {
+  width: 15px;
+  height: 15px;
+  margin-top: 5px;
+  fill: #dfdfdf;
+  stroke: #dfdfdf;
+}
+
+.product-card__title-custom a {
+  overflow: visible;
+  max-width: 230px;
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.product-card__price {
+  text-align: center;
+  margin: 20px 0px 0px;
+}
+
+.product-card__title-custom {
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 500;
+  margin: 0 0 8px;
+  text-transform: capitalize;
+  font-family: "Jost*", sans-serif;
+  color: #000000;
+  text-align: center;
+}
+
+.icon-with-text__content .description {
+    text-align:center;
+ }
+
+ .product-list-title{
+    margin-left:50px;
+}
+
+.product-card__content-custom {
+  z-index: 2;
+  display: flex;
+  padding-top: 15px;
+  position: relative;
+  background-color: var(--shopify-editor-setting-color_body_bg);
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-card__btn-alt {
+  margin: 0;
+  width: 100%;
+  display: block;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 500;
+  padding: 8px 10px;
+  text-align: center;
+  white-space: nowrap;
+  text-transform: capitalize;
+  font-family: "Jost*", sans-serif;
+  color: white;
+  border: 1px solid #6e8871;
+  background-color: #6e8871;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-left: 70px;
+  padding-right: 70px;
+}
+
+/* icon with text */
+
+.halo-column__item {
+  margin: 55px 0 0 0;
+}
+
+.icon-with-text {
+  flex-direction: column;
+  align-items: center;
+}
+
+[data-section-type="icon-with-text"]
+  .slick-slider
+  .slick-slide
+  .halo-row__item {
+  border-left: none !important;
+}
+
+.icon-with-text__icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+
+
+.btn {
+  text-transform: none;
+}
+
+#last_block {
+  margin-left: 0px;
+}
+
+/* image with text */
+
+.debut-column-image {
+  width: 40%;
+  display: inline-block;
+
+}
+
+.debut-column-text {
+  width: 55%;
+  display: flex;
+  align-items:center;
+  justify-content:center;
+ 
+}
+
+.debut-column-image-with-text {
+  display: flex;
+  position: relative;
+  margin-left: -15px;
+  margin-right: -15px;
+  
+}
+
+.debut-text-content{
+ max-width:400px;
+}
+
+.brands-padding{
+    padding-left:45px!important;
+    padding-right:45px!important;
+}
+
+
+
+
+

@@ -1,0 +1,96 @@
+{% assign pagename = request.page_type | handle %}
+
+<div class="header-PC">
+    <div class="container">
+        <div class="header-middle">
+            <div class="header-middle__center">
+                <div class="logo-wrapper" itemscope itemtype="http://schema.org/Organization">
+                    <meta itemprop="url" content="{{ shop.url }}">
+                    {% if section.settings.logo != blank %}
+                        {% assign img_size = section.settings.logo_max_width | append: 'x' %}
+                        {% assign img_url = section.settings.logo | img_url: img_size %}
+                        {% assign second_img_url = section.settings.secondlogo | img_url: img_size %}
+                        <a href="{{ routes.root_url }}" class="site-header__logo-image" aria-label="logo" style="width: {{ section.settings.logo_max_width }}px; max-width: {{ section.settings.logo_max_width }}px">
+                            {% capture logo_alt %}{{ section.settings.logo.alt | default: shop.name }}{% endcapture %}
+                            <img itemprop="logo" class = "first-logo" src="{{ img_url }}" alt="{{ logo_alt | escape }}">
+                            <img itemprop="logo" class = "second-logo" src="{{ second_img_url }}" alt="{{ logo_alt | escape }}">
+                        </a>
+                    {% else %}
+                        <a class="logo_text" href="{{ routes.root_url }}" aria-label="logo" style="width: {{ section.settings.logo_max_width }}px">
+                            {% if section.settings.logo_text != blank %}
+                                {{ section.settings.logo_text }}
+                            {% else %}
+                                {{ shop.name }}
+                            {% endif %}
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="header-middle__left{% if section.settings.main-menu-position == 'left' %} header-middle__navigation{% endif %}">
+                {% if section.settings.main-menu-position == 'left' %}
+                    {% render 'site-nav', main_menu: section.settings.main_linklist %}
+                {% endif %}
+                {% if shop.customer_accounts_enabled %}
+                    {% if section.settings.enable-header-account and section.settings.header-account-position == 'left' %}
+                        <div class="header-middle__item header-middle__item--account">
+                            {% render 'header-account', pagename: pagename %}
+                        </div>
+                    {% endif %}
+                {% endif %}
+                {% if section.settings.enable-header-search and section.settings.header-search-position == 'left' %}
+                    <div class="header-middle__item header-middle__item--quickSearch">
+                        <a class="navUser-action" href="javascript:void(0)" aria-label="link" data-search-popup>
+                            {{ 'general.search.placeholder' | t }}
+                        </a>
+                    </div>
+                {% endif %}
+                {% if section.settings.enable-header-wishlist and section.settings.header-wishlist-position == 'left' %}
+                    <div class="header-middle__item header-middle__item--wishlist">
+                        <a class="navUser-action" href="{{ routes.cart_url | split: '/cart' | first }}/pages/wish-list" aria-label="link">
+                            {{ 'general.wishlist.wishlist' | t }}
+                            <span data-wishlist-count>(0)</span>
+                        </a>
+                    </div>
+                {% endif %}
+                {% if section.settings.enable-header-cart and section.settings.header-cart-position == 'left' %}
+                    <div class="header-middle__item header-middle__item--cart">
+                        {% render 'header-cart', pagename: pagename %}
+                    </div>
+                {% endif %}
+            </div>
+            
+            <div class="header-middle__right{% if section.settings.main-menu-position == 'right' %} header-middle__navigation{% endif %}">
+                {% if section.settings.main-menu-position == 'right' %}
+                    {% render 'site-nav', main_menu: section.settings.main_linklist %}
+                {% endif %}
+                {% if shop.customer_accounts_enabled %}
+                    {% if section.settings.enable-header-account and section.settings.header-account-position == 'right' %}
+                        <div class="header-middle__item header-middle__item--account">
+                            {% render 'header-account', pagename: pagename %}
+                        </div>
+                    {% endif %}
+                {% endif %}
+                {% if section.settings.enable-header-search and section.settings.header-search-position == 'right' %}
+                    <div class="header-middle__item header-middle__item--quickSearch">
+                        <a class="navUser-action" href="javascript:void(0)" aria-label="link" data-search-popup>
+                            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-search" viewBox="0 0 37 40"><path d="M35.6 36l-9.8-9.8c4.1-5.4 3.6-13.2-1.3-18.1-5.4-5.4-14.2-5.4-19.7 0-5.4 5.4-5.4 14.2 0 19.7 2.6 2.6 6.1 4.1 9.8 4.1 3 0 5.9-1 8.3-2.8l9.8 9.8c.4.4.9.6 1.4.6s1-.2 1.4-.6c.9-.9.9-2.1.1-2.9zm-20.9-8.2c-2.6 0-5.1-1-7-2.9-3.9-3.9-3.9-10.1 0-14C9.6 9 12.2 8 14.7 8s5.1 1 7 2.9c3.9 3.9 3.9 10.1 0 14-1.9 1.9-4.4 2.9-7 2.9z"/></svg>
+                        </a>
+                    </div>
+                {% endif %}
+                {% if section.settings.enable-header-wishlist and section.settings.header-wishlist-position == 'right' %}
+                    <div class="header-middle__item header-middle__item--wishlist">
+                        <a class="navUser-action" href="{{ routes.cart_url | split: '/cart' | first }}/pages/wish-list" aria-label="link">
+                           
+                            <span data-wishlist-count>(0)</span>
+                        </a>
+                    </div>
+                {% endif %}
+                {% if section.settings.enable-header-cart and section.settings.header-cart-position == 'right' %}
+                    <div class="header-middle__item header-middle__item--cart">
+                        {% render 'header-cart', pagename: pagename %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

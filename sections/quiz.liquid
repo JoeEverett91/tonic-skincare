@@ -1,0 +1,186 @@
+
+<div style = "min-height:100vh">
+
+{% form 'contact'%} {% render
+'form-status', form_id: formId, form: form %}
+
+
+
+ <label for="{{ formId }}-email" style = "visibility: hidden;" class="form-label">{{ 'contact.form.email' | t }} <em>*</em></label> 
+<input
+    type="email"
+    id="{{ formId }}-email" class="form-control"
+    name="contact[email]"
+    autocapitalize="off"
+    value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+    aria-required="true"
+    style = "visibility:hidden;"
+    {%- if form.errors contains 'email' -%}
+        class="input--error"
+        aria-invalid="true"
+        aria-describedby="{{ formId }}-email-error"
+    {%- endif -%}
+    >
+{%- if form.errors contains 'email' -%}
+    <span id="{{ formId}}-email-error" class="input-error-message"><svg class="icon"><use xlink:href="#icon-error" /></svg> {{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}.</span>
+{%- endif -%}
+<div class = "answerwrapper">
+<div class = "answers">
+  <div class = "answer" id = "answer1">
+    <h1>What is your first name</h1>
+    <input autocomplete = "off"type = "text" id = "name"/>
+  </div>
+<div class = "answer" id = "answer2">
+<h1>What is your favourite hot drink?</h1>
+<input
+  type="radio"
+  id="ContactFormTea"
+  name="contact[Tea or Coffee]"
+  value="Tea"
+  class = "radioBox"
+/>
+<label for = "ContactFormTea"><span>Tea</span></label>
+<input
+  type="radio"
+  id="contactFormCoffee"
+  name="contact[Tea or Coffee]"
+  value="Coffee"
+  class = "radioBox"
+/>
+<label for = "contactFormCoffee"><span>Coffee</span></label>
+<br />
+<br />
+</div>
+
+<div class = "answer" id = "answer3">
+  <h1>What is your favourite fruit?</h1>
+<input
+  type="radio"
+  id="ContactFormBanana"
+  name="contact[Banana or Apple]"
+  value="Banana"
+  class = "radioBox"
+/>
+<label for = "ContactFormBanana"><span>Banana</span></label>
+<input
+  type="radio"
+  id="ContactFormApple"
+  name="contact[Banana or Apple]"
+  value="Apple"
+  class = "radioBox"
+/>
+<label for = "ContactFormApple"><span>Apple</span></label>
+
+</div>
+<div class = "buttons">
+  <button id = "move" type = "button">Next</button>
+  <input
+    type="submit"
+    class="btn btn--primary btn--large mt-3"
+    value="{{ 'contact.submit.button' | t }}"
+    style = "margin-top:175px;display:none;"
+  />
+  </div>
+</div>
+</div>
+
+{% endform %}
+
+</div>
+
+
+<style>
+
+#name{
+  height:85px;
+  border:3px solid black;
+  font-size:30px;
+}
+
+  #move{
+    width:200px;
+    padding:15px 25px;
+    background-color:black;
+    color:white;
+    border:none;
+    display:none;
+    border-radius:30px;
+}
+
+.answer{
+  display:none;
+}
+
+.answer h1{
+  margin-bottom:50px;
+  font-size:50px;
+}
+
+
+.answer:first-child{
+  display:block;
+}
+
+.answer label{
+  margin-right:20px;
+  padding: 0px 15px;
+  border:3px solid white;
+}
+
+span{
+  font-size:27px;
+}
+
+.answer label:hover{
+  border-color:#38b2ac!important;
+}
+
+.buttons{
+  justify-content:center;
+  margin-top:50px;
+}
+
+.answerwrapper{
+  display:flex;
+  justify-content: center;
+}
+
+.answers{
+  display:flex;
+  margin-top:75px;
+  flex-direction:column;
+  align-items: start;
+}
+
+[type="radio"]:checked,
+[type="radio"]:not(:checked){
+  position:absolute;
+  left:-9999px;
+  width:0;
+  height:0;
+  visibility:hidden;
+}
+
+.radioBox:checked + label, .radioBox:not(:checked) + label{
+  position: relative;
+	display: inline-block;
+	padding: 0;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	width: 260px;
+	font-size: 52px;
+	line-height: 52px;
+	font-weight: 700;
+	letter-spacing: 1px;
+	margin: 0 auto;
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-bottom: 10px;
+  background-color:transparent;
+}
+
+.radioBox:checked + label{
+  border: 3px solid black;
+}
+
+</style>
