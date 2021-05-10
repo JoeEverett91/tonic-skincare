@@ -58,7 +58,7 @@
                 </div>
             {% endif %}
             {% if show_product_price %}
-                <div class="product-card__price {% if product.compare_at_price_min > product.price_min %}price--on-sale{% endif %}" data-price>
+             <!-- <div class="product-card__price {% if product.compare_at_price_min > product.price_min %}price--on-sale{% endif %}" data-price>
                     {% if product.compare_at_price_min > product.price %}
                         <span class="price-item price-item--regular" data-regular-price>
                             {{ product.compare_at_price_min | money }}
@@ -82,7 +82,7 @@
                     {% if compare %}
                         {% render 'product-compare',  id: product.id, link: product.handle %}
                     {% endif %}
-                </div>
+                </div> -->
             {% endif %}
             {% render 'product-variant-color', product: product, show_product_variant: show_product_variant %}
             {% if product.available %}

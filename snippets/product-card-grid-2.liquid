@@ -60,7 +60,7 @@
             <div class="product-card__button">
                 {% if product.available %}
                     <a class="product-card__btn product-card__btn--plus" href="{{ product.url | within: collection }}" aria-label="button">
-                        <span>{{ 'products.product.add' | t }}</span>
+                        <span>{{ 'products.product.add' | t }}</span><span>{{product.price | | money_with_currency}}</span>
                     </a>
                 {% else %}
                     <button class="product-card__btn product-card__btn-soldOut" type="submit" disabled="disabled">

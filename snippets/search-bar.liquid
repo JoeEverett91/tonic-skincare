@@ -1,10 +1,14 @@
 {% if settings.enable-search-form %}
 <div class="search-form-wrapper text-left" data-ajax-search>
     <div class="search-form--close" data-search-close-popup>&#215;</div>
+    
     <div class="search-form">
+        <h3 class="search-form__product-title text-left">
+            Search for products...
+        </h3>
         <form action="{{ routes.search_url }}" method="get" class="input-group search-bar" role="search">
             <input type="hidden" name="type" value="product">
-            <input type="text" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" class="input-group-field search-form__input" aria-label="Search Site" autocomplete="off">
+            <input type="text" name="q" value="{{ search.terms | escape }}" placeholder = "{{ 'general.search.placeholder' | t }}" class="input-group-field search-form__input" aria-label="Search Site" autocomplete="off">
             <button type="submit" class="btn-search icon-search" title="search">
                 <svg class="icon"><use xlink:href="#icon-search" /></svg>
             </button>
@@ -80,7 +84,7 @@
                     </div>
                 {% endif %}
                 {% if settings.enable-search-products %}
-                    <div class="search-form__product search-form__product--1 mt-5">
+                    <div class="search-form__product search-form__product--1">
                         <h3 class="search-form__product-title text-center">
                             {{ settings.search-products-title }}
                         </h3>

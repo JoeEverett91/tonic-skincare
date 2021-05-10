@@ -31,9 +31,14 @@
 
 <div class="halo-section padding-top-{{ top }} padding-bottom-{{ bottom }} {{ background_color }} {{ border_top }} {{ border_bottom }}" data-section-id="{{ section.id }}" data-section-type="quotes">
     <div class="container">
+        <div class = "newsletter-container">
         {% if section.settings.title != blank %}
             <div class="section-header text-center">
-                <h2 class="title">{{ section.settings.title }}</h2>
+                <svg width="26" height="21" viewBox="0 0 26 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.0912 6.14648C13.4576 1.14599 6.47816 -3.01572 2.18478 2.91425C-1.23958 7.6436 0.640842 14.4943 2.56711 19.0266C3.64191 18.4931 4.8718 18.1342 6.23725 17.9752C6.75125 17.9147 7.32181 17.9372 7.95577 17.9694C9.50654 18.0464 11.4767 18.262 14.0672 16.0821L15.6404 14.7566L15.9807 16.7853C16.1914 18.0396 15.9573 19.1358 15.2834 20.0439C15.1137 20.2701 14.9215 20.4779 14.7118 20.6681C15.6345 20.277 16.5279 19.6323 17.393 19.01C18.7429 18.0367 20.0186 17.1179 21.4455 17.1179C21.977 17.1179 22.4852 17.2505 22.9592 17.508L23.1825 17.6309C23.637 17.0457 24.034 16.4127 24.3471 15.7105C27.3374 9.02758 20.241 5.06192 15.0912 6.14648Z" fill="white"/>
+                    </svg>
+                    
+                    
                 {% if section.settings.description != blank %}
                     <p>{{ section.settings.description }}</p>
                 {% endif %}
@@ -102,6 +107,7 @@
                 {% endfor %}
             </div>
         {% endif %}
+    </div>
     </div>
 </div>
 

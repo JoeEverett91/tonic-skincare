@@ -1703,7 +1703,7 @@ $color-bg-someone-purchased: {{ settings.color_bg_someone_purchased }};
         margin-left: auto;
         margin-right: auto;
         color: $color-search-bar;
-        background-color: transparent;
+        background-color: white;
     }
 
     .search-bar input {
@@ -1714,22 +1714,24 @@ $color-bg-someone-purchased: {{ settings.color_bg_someone_purchased }};
         width: calc(100% - 40px);
         color: $color-search-bar;
         border-bottom: 1px solid $color-search-bar;
+        font-size:25px;
     }
 
     .search-bar input::-webkit-input-placeholder {
-        color: lighten($color-search-bar, 30%);
+        color: black;
+        font-size:25px;
     }
 
     .search-bar input::-moz-placeholder {
-        color: lighten($color-search-bar, 30%);
+        color: black;
     }
 
     .search-bar input:-ms-input-placeholder {
-        color: lighten($color-search-bar, 30%);
+        color: black;
     }
 
     .search-bar input::-ms-input-placeholder {
-        color: lighten($color-search-bar, 30%);
+        color:black;
     }
 
     .search-bar button {

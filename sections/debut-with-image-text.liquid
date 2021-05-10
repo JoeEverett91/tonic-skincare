@@ -39,11 +39,11 @@
 <div class="halo-section padding-top-{{ top }} padding-bottom-{{ bottom }} {{ background_color }} {{ border_top }} {{ border_bottom }}" data-section-id="{{ section.id }}" data-section-type="image-with-text-1">
     <div class="container">
       
-        <div class="debut-column-image-with-text">
+        <div class="debut-column-image-with-text" {% if section.settings.layout %} style = "flex-direction:row-reverse;"{% endif %}>
             
                 <div class="debut-column-image">
                     <div class="image-with-text text-center{% if block.settings.layout %} image-with-text--custom{% endif %}">
-                        <div class="image-with-text__image image--hover">
+                        <div class="image-with-text__image ">
                             {% assign img_url = section.settings.image | img_url: 'master' %}
                             {% assign img_url_2 = section.settings.image | img_url: '340x' %}
                             {% if section.settings.image != blank %}
@@ -55,7 +55,7 @@
                                 {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
                             {% endif %}
                             {% if section.settings.link_url != blank %}
-                                <a href="{{ section.settings.link_url }}" aria-label="link"></a>
+                                <a class = "debut-btn slide_from_left" href="{{ section.settings.link_url }}" aria-label="link"></a>
                             {% endif %}
                         </div>
                      
@@ -65,7 +65,7 @@
                    <div class = "debut-text-content"> 
                <h2>{{section.settings.title}}</h2>
                <p>{{section.settings.description}}</p>
-               <a href="{{ section.settings.link_url }}" class="link" aria-label="link">{{ section.settings.link }}</a>
+               <a href="{{ section.settings.link_url }}" class="link debut-btn slide_from_left" aria-label="link">{{ section.settings.link }}</a>
                </div>
                 </div>
         
@@ -110,6 +110,26 @@
         "type": "url",
         "id": "link_url",
         "label": "Link Url(Optional)"
+    },
+    {
+        "type": "range",
+        "id": "top",
+        "label": "Spacing Top",
+        "default": 30,
+        "min": 0,
+        "max": 100,
+        "step": 10,
+        "unit": "px"
+    },
+    {
+        "type": "range",
+        "id": "bottom",
+        "label": "Spacing bottom",
+        "default": 30,
+        "min": 0,
+        "max": 100,
+        "step": 10,
+        "unit": "px"
     }
     ],
 

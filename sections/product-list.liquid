@@ -46,18 +46,24 @@
 {% assign img_url = section.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
 
 <div class="halo-section padding-top-{{ top }} padding-bottom-{{ bottom }} {{ background_color }} {{ border_top }} {{ border_bottom }}" data-section-id="{{ section.id }}" data-section-type="product-list">
-    <div class="container">
+    <div class="container" style = "position:relative;">
         {% if section.settings.title != blank %}
             <div class="section-header text-center product-list-title">
-                <h2 class="title header-middle__left">{{ section.settings.title }}</h2>
-                {% if section.settings.description != blank %}
-                    <p>{{ section.settings.description }}</p>
-                {% endif %}
+                <h2 class="title t-align-left">{{ section.settings.title }}</h2>
+                
                 {% if section.settings.link != blank %}
                     <a class="btn btn--primary" href="{{ collection.url }}">{{ section.settings.link }}</a>
                 {% endif %}
             </div>
         {% endif %}
+        {% if section.settings.description != blank %}
+                <div class = "product-list-collection-link">
+                    <a  href = "collections/{{section.settings.collection_link}}">
+                        <p>{{ section.settings.description }}</p>
+                        
+                    </a>
+                </div>
+                {% endif %}
         {%if carousel == 'carousel' %}
             <div class="halo-row column-{{ column }}"
                 data-slick-pc data-slick='{
@@ -181,9 +187,14 @@
             "default": "Product List"
         },
         {
-            "type": "textarea",
+            "type": "text",
             "id": "description",
-            "label": "Description"
+            "label": "Collection link text"
+        },
+        {
+            "type": "collection",
+            "id": "collection_link",
+            "label": "Colleciton link"
         },
         {
             "type": "text",

@@ -85,7 +85,7 @@
                     <div class="icon-with-text text-left" {% if forloop.index == 3 %} id = "last_block"{% endif %}>
                         <div class="icon-with-text__icon"{% if section.settings.color_icon %} style="color: {{ section.settings.color_icon }}; fill: {{ section.settings.color_icon }}"{% endif %} >
                             {% if block.settings.icon != blank %}
-                                {{ block.settings.icon }}
+                             {{ block.settings.icon }}
                             {% else %}
                                 <img src="{{ 'loading.svg' | asset_url }}" alt="" data-image-loading>
                             {% endif %}

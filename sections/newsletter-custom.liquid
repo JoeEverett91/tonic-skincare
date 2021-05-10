@@ -1,0 +1,180 @@
+{% if section.settings.background-color %}
+    {% assign background_color = 'halo-section-background-gray' %}
+{% endif %}
+
+{% if section.settings.border-top %}
+    {% assign border_top = 'halo-section-border-top' %}
+{% endif %}
+
+{% if section.settings.border-bottom %}
+    {% assign border_bottom = 'halo-section-border-bottom' %}
+{% endif %}
+
+{% assign top = top | default: section.settings.top %}
+{% assign bottom = bottom | default: section.settings.bottom %}
+
+{% if section.settings.custom_color %}
+<style>
+    [data-section-id='{{ section.id }}'] .section-header .title {
+        color: {{ section.settings.color_heading }};
+    }
+
+    [data-section-id='{{ section.id }}'] .section-header > p {
+        color: {{ section.settings.color_text }};
+    }
+
+     
+</style>
+{% endif %}
+
+<div class="halo-section padding-top-{{ top }} padding-bottom-{{ bottom }} {{ background_color }} {{ border_top }} {{ border_bottom }}" data-section-id="{{ section.id }}" data-section-type="newsletter">
+    <div class="container">
+    <div class = "newsletter-container">
+        <svg width="26" height="21" style = "margin-bottom:15px;" viewBox="0 0 26 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.0912 6.14648C13.4576 1.14599 6.47816 -3.01572 2.18478 2.91425C-1.23958 7.6436 0.640842 14.4943 2.56711 19.0266C3.64191 18.4931 4.8718 18.1342 6.23725 17.9752C6.75125 17.9147 7.32181 17.9372 7.95577 17.9694C9.50654 18.0464 11.4767 18.262 14.0672 16.0821L15.6404 14.7566L15.9807 16.7853C16.1914 18.0396 15.9573 19.1358 15.2834 20.0439C15.1137 20.2701 14.9215 20.4779 14.7118 20.6681C15.6345 20.277 16.5279 19.6323 17.393 19.01C18.7429 18.0367 20.0186 17.1179 21.4455 17.1179C21.977 17.1179 22.4852 17.2505 22.9592 17.508L23.1825 17.6309C23.637 17.0457 24.034 16.4127 24.3471 15.7105C27.3374 9.02758 20.241 5.06192 15.0912 6.14648Z" fill="white"/>
+            </svg>
+            
+        {% if section.settings.title != blank %}
+            <div class="text-center">
+                <h2 class="title newsletter-heading">{{ section.settings.title }}</h2>
+               
+            </div>
+        {% endif %}
+        {% if section.settings.description != blank %}
+        <p class = "newsletter-description">{{ section.settings.description }}</p>
+    {% endif %}
+        {%- assign formId = 'Contact_' | append: section.id -%}
+        {% form 'customer', id: formId, class: 'contact-form form-single-field' %}
+            {%- if form.posted_successfully? -%}
+                <p class="form-message form-message--success" tabindex="-1" data-form-status>
+                    {{ 'general.newsletter_form.confirmation' | t }}
+                </p>
+            {%- endif -%}
+            <input type="hidden" name="contact[tags]" value="newsletter">
+            <div class="input-group {% if form.errors %} input-group--error{% endif %}">
+                <input type="email"
+                    name="contact[email]"
+                    id="{{ formId }}-email"
+                    class="input-group__field{% if form.errors %} input--error{% endif %}"
+                    value="{{ form.email }}"
+                    placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}"
+                    aria-label="{{ 'general.newsletter_form.email_placeholder' | t }}"
+                    aria-required="true"
+                    autocapitalize="off"
+                    {% if form.errors %}
+                        aria-invalid="true"
+                        aria-describedby="{{ formId }}-email-error"
+                        data-form-status
+                    {% endif %}
+                    >
+                <span class="input-group__btn">
+                    <button type="submit" class="btn btn--primary" name="commit" id="Subscribe">{{ 'general.newsletter_form.submit' | t }}</button>
+                </span>
+            </div>
+            {%- if form.errors contains 'email' -%}
+                <span id="{{ formId }}-email-error" class="input-error-message">
+                    <svg class="icon"><use xlink:href="#icon-error" /></svg> {{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}.
+                </span>
+            {%- endif -%}
+        {% endform %}
+    </div>
+    </div>
+</div>
+
+
+
+{% schema %}
+{
+    "name": "Newsletter-2",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Section Layout"
+        },
+        {
+            "type": "checkbox",
+            "id": "background-color",
+            "label": "Background Color Custom",
+            "default": false
+        },
+        {
+            "type": "checkbox",
+            "id": "border-top",
+            "label": "show border top",
+            "default": false
+        },
+        {
+            "type": "checkbox",
+            "id": "border-bottom",
+            "label": "show border bottom",
+            "default": false
+        },
+        {
+            "type": "range",
+            "id": "top",
+            "label": "Spacing Top",
+            "default": 30,
+            "min": 0,
+            "max": 100,
+            "step": 10,
+            "unit": "px"
+        },
+        {
+            "type": "range",
+            "id": "bottom",
+            "label": "Spacing bottom",
+            "default": 30,
+            "min": 0,
+            "max": 100,
+            "step": 10,
+            "unit": "px"
+        },
+        {
+            "type": "header",
+            "content": "Heading Section"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Subscribe to our newsletter"
+        },
+        {
+            "type": "textarea",
+            "id": "description",
+            "label": "Description",
+            "default": "A short sentence describing what someone will receive by subscribing"
+        },
+        {
+            "type": "paragraph",
+            "content": "Any customers who sign up will have an account created for them in Shopify. [View customers](/admin/customers?query=&accepts_marketing=1)"
+        },
+        {
+            "type": "header",
+            "content": "Custom Color"
+        },
+        {
+            "type": "checkbox",
+            "id": "custom_color",
+            "label": "Turn on custom color",
+            "default": false
+        },
+        {
+            "type": "color",
+            "id": "color_heading",
+            "label": "Heading Color"
+        },
+        {
+            "type": "color",
+            "id": "color_text",
+            "label": "Description Color"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Newsletter-2",
+            "category": "Promotional"
+        }
+    ]
+}
+{% endschema %}

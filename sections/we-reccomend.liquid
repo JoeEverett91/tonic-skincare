@@ -3,14 +3,16 @@
     <div class = "custom-arrows"></div>
     <div class = "row reccommend-slider">
         {% for block in section.blocks %}
-        <div class = "col-4">
+        <div class = "col-4 col-md-2 col-sm-2">
            
                 {% assign img_url = block.settings.image | img_url: 'master' %}
                 {% assign img_url_2 = block.settings.image | img_url: '340x' %}
                 {% if block.settings.image != blank %}
+                <span class = "animate-scale">
                     <img class="lazyload"
                         data-srcset="{{ img_url_2 }} 380w, {{ img_url }} 768w"
                         data-sizes="auto" alt="" data-image>
+                </span>
                 {% else %}
                     <span class="recommended_size">Free size</span>
                     {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
